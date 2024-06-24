@@ -1,0 +1,24 @@
+
+<form [formGroup]="form"  class="example-form w-100 p-4" style="min-width:  40vw; height:400px;">
+
+    <mat-card class="h-100 w-100 d-flex justify-content-center flex-column align-items-center">
+        <h3>{{data.message}}</h3>
+        <h5>{{data.submessage}}</h5>
+        <mat-form-field class="example-full-width w-100 ps-5 pe-5">
+
+          <mat-label>Ingrese el Nombre de la Marca</mat-label>
+          <input type="text" matInput formControlName="name" placeholder="Ej. Renault" value="{{data.name}}">
+          <mat-error *ngIf="form.get('name')?.hasError('text') && !form.get('name')?.hasError('required')">
+            Solo se permiten letras
+          </mat-error>
+          <mat-error *ngIf="form.get('name')?.hasError('required')">
+            El campo es requerido
+          </mat-error>
+        </mat-form-field>
+        <div class="d-flex flex-row w-100 ps-5 pe-5">
+            <button class="w-100 me-2" mat-raised-button color="primary" (click)="execute()">{{data.submessage}}</button>
+            <button class="w-100 ms-2" mat-raised-button color="warn" (click)="close()">Cancelar</button>
+        </div>
+    </mat-card>
+
+</form>

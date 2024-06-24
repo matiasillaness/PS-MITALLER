@@ -1,0 +1,64 @@
+<div class="m-3 p-3">
+    <h4 class="mb-3">{{data.message}}</h4>
+    <hr>
+    <form action="" [formGroup]="form">
+        <div class="row">
+            <div class="col-6">
+                <mat-form-field style="width: 100%;" class="example-full-width">
+                    <mat-label>Email</mat-label>
+                    <input required formControlName="email" matInput placeholder="Nombre">
+                </mat-form-field>
+            </div>
+            <div class="col-6">
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Nombre</mat-label>
+                    <input required formControlName="nombre" matInput placeholder="Apellido">
+                </mat-form-field>
+            </div>
+            <div class="col-6">
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Email</mat-label>
+                    <input [disabled]="form.get('email')!.disabled" required formControlName="email" matInput placeholder="Email">
+                </mat-form-field>
+            </div>
+            <div class="col-6">
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Telefono</mat-label>
+                    <input required formControlName="telefono" matInput placeholder="Telefono">
+                </mat-form-field>
+            
+            </div>
+            <div class="col-6">
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Direccion</mat-label>
+                    <input required formControlName="direccion" matInput placeholder="Contraseña">
+                </mat-form-field>
+            </div>
+            <div class="col-6">
+                <mat-form-field *ngIf="data.message == 'Registrar Empleado' " style="width: 100%;">
+                    <mat-label>Contraseña</mat-label>
+                    <input required formControlName="password" matInput placeholder="Contraseña">
+                </mat-form-field>
+                <mat-form-field *ngIf="data.message == 'Editar Usuario' " style="width: 100%;">
+                    <mat-label>Rol</mat-label>
+                    <mat-select required formControlName="password">
+                      <mat-option *ngFor="let m of roles" [value]="m.value">
+                        {{m.label}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+            </div>
+            <div class="col-3">
+                <button (click)="save()" mat-raised-button color="primary" style="width: 100%;">
+                    <h6 class="mt-2">{{data.submessage}}    
+                    </h6>
+                  </button>
+            </div>
+            <div class="col-3">
+                <button (click)="reset()" mat-raised-button color="warn" style="width: 100%;">
+                    <h6 class="mt-2">Cancelar</h6>
+                  </button>
+            </div>
+        </div>
+    </form>
+</div>

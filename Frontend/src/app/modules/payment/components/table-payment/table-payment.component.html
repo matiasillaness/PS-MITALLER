@@ -1,0 +1,175 @@
+
+<div class="m-4">
+    <div>
+        <form action="" [formGroup]="formFilter">
+            <div class="row">
+                <div class="col-1">
+                    <mat-form-field style="width: 100%;" class="example-full-width">
+                        <mat-label>Numero</mat-label>
+                        <input formControlName="numeroFactura" matInput placeholder="Nombre Comprobante">
+                    </mat-form-field>
+                </div>
+                <div class="col-1">
+                    <mat-form-field style="width: 100%;" class="example-full-width">
+                        <mat-label>Cliente</mat-label>
+                        <input formControlName="cliente" matInput placeholder="Cliente Nombre">
+                    </mat-form-field>
+                </div>
+                <div class="col-2">
+                    <mat-form-field style="width: 100%;" class="example-full-width">
+                        <mat-label>Descripcion</mat-label>
+                        <input formControlName="descripcion" matInput placeholder="Descripcion">
+                    </mat-form-field>
+                </div>
+      
+                <div class="col-2">
+                    <mat-form-field style="width: 100%;">
+                      <mat-select formControlName="tipoPago" placeholder="Tipo Pago">
+                        <mat-option *ngFor="let e of null" [value]="e.name">
+                          {{e.name}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-2">
+                    <mat-form-field style="width: 100%;">
+                      <mat-select formControlName="tipoFactura" placeholder="Tipo Factura">
+                        <mat-option *ngFor="let e of null" [value]="e.name">
+                          {{e.name}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                <div class="col-2">
+                    <mat-form-field style="width: 100%;" class="example-full-width">
+                        <mat-label>Entre</mat-label>
+                        <mat-date-range-input [rangePicker]="picker">
+                            <input formControlName="fechaInicio" matStartDate placeholder="Fecha Inicial">
+                            <input formControlName="fechaFin" matEndDate placeholder="Fecha Final">
+                        </mat-date-range-input>
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-date-range-picker #picker></mat-date-range-picker>
+                    </mat-form-field>
+                </div>
+
+
+                <div class="col-1">
+                    <button (click)="aplicarFiltros()" mat-raised-button color="primary"
+                        style="width: 100%; height: 55px;">
+                        <h6 class="mt-2">Buscar
+
+                        </h6>
+                    </button>
+                </div>
+                <div class="col-1">
+
+                    <button routerLink="/panel/buy/register" mat-raised-button color="primary"
+                        style="width: 100%; height: 55px;">
+                        <h6 class="mt-2">Registrar</h6>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="mat-elevation-z4" style="width: 100%; border-radius: 10px;">
+
+        <table mat-table [dataSource]="dataSource" style=" width: 100%; ">
+            <ng-container matColumnDef="numeroFactura">
+                <th mat-header-cell *matHeaderCellDef>
+                    Nombre
+                </th>
+                <td mat-cell *matCellDef="let element">{{element.numeroFactura}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="descripcion">
+                <th mat-header-cell *matHeaderCellDef>
+                    Descripcion
+                </th>
+                <td mat-cell *matCellDef="let element">{{element.descripcion}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="fecha">
+                <th mat-header-cell *matHeaderCellDef>
+                    Fecha
+                </th>
+                <td mat-cell *matCellDef="let element">{{element.fecha}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="cliente">
+                <th mat-header-cell *matHeaderCellDef>
+                    Cliente
+                </th>
+                <td mat-cell *matCellDef="let element">{{element.razonSocial}}</td>
+            </ng-container>
+            <ng-container matColumnDef="tipoFactura">
+                <th mat-header-cell *matHeaderCellDef>
+                    Tipo Factura
+                </th>
+                <td mat-cell *matCellDef="let element">{{element.tipoFactura}}</td>
+            </ng-container>
+            <ng-container matColumnDef="tipoPago">
+                <th mat-header-cell *matHeaderCellDef>
+                    Tipo Pago
+                </th>
+                <td mat-cell *matCellDef="let element">{{element.tipoPago}}</td>
+            </ng-container>
+            <ng-container matColumnDef="patente">
+                <th mat-header-cell *matHeaderCellDef>
+                    Patente
+                </th>
+                <td mat-cell *matCellDef="let element">{{element.vehiculo.patente}}</td>
+            </ng-container>
+            <ng-container matColumnDef="modelo">
+                <th mat-header-cell *matHeaderCellDef>
+                    Modelo
+                </th>
+                <td mat-cell *matCellDef="let element">{{element.vehiculo.modelo}}</td>
+            </ng-container>
+            <ng-container matColumnDef="dadaDeBaja">
+                <th mat-header-cell *matHeaderCellDef>
+                    Dada de Baja
+                </th>
+                <td mat-cell *matCellDef="let element">
+                    <mat-slide-toggle [disabled]="element.dadaDeBaja" (change)="darDeBaja(element.numeroFactura)" color="primary" [checked]="!element.dadaDeBaja"></mat-slide-toggle>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="detalles">
+                <th mat-header-cell *matHeaderCellDef>
+                    Detalles
+                </th>
+                <td mat-cell *matCellDef="let element"><a (click)="verDetalles(element)" style="cursor:pointer; color: blue; text-decoration:underline;">Detalles</a></td>
+            </ng-container>
+
+            <ng-container matColumnDef="total">
+                <th mat-header-cell *matHeaderCellDef>
+                    Total
+                </th>
+                <td mat-cell *matCellDef="let element">{{element.total | currency}}</td>
+            </ng-container>
+        
+
+
+
+
+
+
+    
+            <ng-container matColumnDef="acciones">
+                <th mat-header-cell *matHeaderCellDef>
+                    Acciones
+                </th>
+                <td mat-cell *matCellDef="let element">
+                    <button mat-raised-button class="me-2" color="primary" (click)="imprimir(element)">
+                        Imprimir Comprobante
+                    </button>
+                </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+        <mat-paginator class="mt-4" style="border-radius: 5px; " [pageSizeOptions]="[10,15,20]"
+            showFirstLastButtons></mat-paginator>
+    </div>
+
+</div>

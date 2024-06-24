@@ -20,7 +20,7 @@ public class Vehiculo {
     @Column(name = "id_vehiculo", nullable = false)
     private Long idVehiculo;
 
-    @Column(name = "patente", nullable = false)
+    @Column(name = "patente", nullable = false, unique = true)
     private String patente;
 
     @Column(name = "modelo", nullable = false)
@@ -33,18 +33,23 @@ public class Vehiculo {
     @Column(name = "tipo_vehiculo", nullable = false)
     private ETipoVehiculo tipoVehiculo;
 
+    @Column(name = "kilometraje", nullable = true)
+    private Integer kilometraje;
+
+    @Column(name = "numero_chasis", nullable = true)
+    private String numeroChasis;
+
     @Enumerated(EnumType.STRING)
     @Column(name = "color", nullable = false)
     private EColor color;
 
-    //------------------------------------------------------------------------------------------
+    @Column(name = "activo", nullable = false)
+    private boolean activo = true;
 
+    //------------------------------------------------------------------------------------------
 
     @ManyToOne(fetch = FetchType.LAZY, targetEntity = Marca.class)
     private Marca marca;
-
-    @OneToMany(mappedBy = "vehiculo", fetch = FetchType.LAZY,targetEntity = Orden.class)
-    private List<Orden> ordenes;
 
 
 

@@ -1,0 +1,17 @@
+<div class="row p-5">
+    <div class="col-12">
+        <h3 class="mb-3">Detalles:</h3>
+    </div>
+    <div *ngFor="let pay of data.payment.detalles" class="col-12 mb-3">
+        <mat-card class="example-card" appearance="outlined">
+            <mat-card-header>
+              <mat-card-title>{{pay.nombreRepuesto}}</mat-card-title>
+            </mat-card-header>
+            <mat-card-footer class="example-card-footer ms-3 mb-3">
+                <h6>Cantidad: {{pay.cantidad}}</h6>
+                <h6>Precio Unitario: {{pay.precioUnitario | currency}}</h6>
+                <h6>Total: {{pay.subtotal | currency}}</h6>
+            </mat-card-footer>
+          </mat-card>
+    </div>
+</div>

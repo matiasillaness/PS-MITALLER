@@ -1,0 +1,14 @@
+.title-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .right-button {
+    margin-left: auto;
+  }
+  
+
+  .space{
+   flex-grow:999;
+  }

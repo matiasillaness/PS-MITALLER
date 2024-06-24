@@ -1,0 +1,164 @@
+<div style="width: 100%;" class="p-4">
+    <form action="" [formGroup]="form">
+        <h4>Registrar Venta</h4>
+        <div class="row mt-3">
+            <div class="col-6">
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Descripcion</mat-label>
+                    <input formControlName="descripcion" matInput>
+                </mat-form-field>
+            </div> 
+         
+            <div class="col-6">
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Patente</mat-label>
+                    <input type="text" formControlName="patente" matInput>
+                </mat-form-field>
+            </div>
+
+            <div class="col-6">
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Tipo Pago</mat-label>
+                    <mat-select formControlName="tipoPago">
+                        <mat-option *ngFor="let type of typePay" [value]="1">
+                          {{type}}
+                        </mat-option>
+                      </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-6">
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Tipo Factura</mat-label>
+                    <mat-select formControlName="tipoFactura">
+                        <mat-option *ngFor="let type of typeBill" [value]="type">
+                          {{type}}
+                        </mat-option>
+                      </mat-select>
+                </mat-form-field>
+            </div>
+            
+            <div class="col-6">
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Descuento</mat-label>
+                    <input type="number" formControlName="descuento" matInput>
+                </mat-form-field>
+            </div>
+            <div class="col-6">
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Dni Cliente</mat-label>
+                    <input type="number" formControlName="dniCliente" matInput>
+                </mat-form-field>
+            </div>
+            <div class="col-6">
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Direccion Cliente</mat-label>
+                    <input type="text" formControlName="direccionCliente" matInput>
+                </mat-form-field>
+            </div>
+            <div class="col-6">
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Razon Social</mat-label>
+                    <input type="text" formControlName="razonSocial" matInput>
+                </mat-form-field>
+            </div>
+            <div class="col-6">
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Telefono Cliente</mat-label>
+                    <input type="text" formControlName="telefonoCliente" matInput>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="col-12" >
+            <mat-card class="mt-3">
+            <mat-card-header>
+              <mat-card-title class=" mt-1">
+                <h5>Detalles de la Compra</h5>
+              </mat-card-title>
+              <div class="space"></div>
+              <button (click)="addDetailRepuesto()" mat-raised-button color="primary" class="me-2">
+                <h6 class="m-2">Agregar Repuesto</h6>
+              </button>
+              <button (click)="addDetailService()" mat-raised-button color="primary" class="me-2">
+                <h6 class="m-2">Agregar Servicio</h6>
+              </button>
+            </mat-card-header>
+            <hr>
+            <div class="m-4" *ngIf="detalleVentaRepuesto.length == 0 && detalleVentaServicio.length == 0">
+                <h6 class="text-center">No hay detalles de compra</h6>
+            </div>
+            <ng-container formArrayName="detalleVentaServicio">
+                <div class="form-group row m-2" *ngFor="let d of detalleVentaServicio.controls; let i = index" [formGroupName]="i">
+                    
+                    <mat-form-field class="col-7">
+                        <mat-label>Servicio</mat-label>
+                        <mat-select formControlName="idServicio">
+                            <mat-option *ngFor="let servicio of service" [value]="servicio.idServicio">
+                              {{servicio.nombre}}
+                            </mat-option>
+                          </mat-select>
+                    </mat-form-field>
+                        
+                        <mat-form-field class="col-4" style="visibility: hidden;">
+                          <input matInput type="number" placeholder="Costo del servicio" formControlName="cantidad">
+                        </mat-form-field>
+                      
+                  
+                   
+                    <div class="col-1">
+                        <button (click)="removeDetailService(i)" style="height: 3vw;" mat-raised-button color="warn" class="me-2">
+                            <h6 class="m-2">-</h6>
+                        </button>
+                    </div>
+                </div>
+            </ng-container>
+
+
+            <ng-container formArrayName="detalleVentaRepuesto">
+                <div class="form-group row m-2" *ngFor="let d of detalleVentaRepuesto.controls; let i = index" [formGroupName]="i">
+                    
+                    <mat-form-field class="col-7">
+                        <mat-label>Repuesto</mat-label>
+                        <mat-select formControlName="idRepuesto">
+                            <mat-option *ngFor="let servicio of repuesto" [value]="servicio.idRepuesto">
+                              {{servicio.nombre}}
+                            </mat-option>
+                          </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field class="col-4">
+                        <input matInput type="number" placeholder="Cantidad de Repuesto iguales" formControlName="cantidad">
+                    </mat-form-field>
+                     
+                  
+                   
+                    <div class="col-1">
+                        <button (click)="removeDetail(i)" style="height: 3vw;" mat-raised-button color="warn" class="me-2">
+                            <h6 class="m-2">-</h6>
+                        </button>
+                    </div>
+                </div>
+            </ng-container>
+            
+            <hr>
+            <div>
+                <div class="row">
+                    <div class="ms-4 mt-2 mb-2">
+                        <h6>Total: {{total | currency}}</h6>
+                    </div>
+                </div>
+            </div>
+          </mat-card>
+        </div>
+       
+        <div class="col-12 mt-3 mb-3" style="float: right;">
+            <button mat-raised-button color="primary" class="me-2">
+                <h6 class="m-2" (click)="save()">Guardar</h6>
+            </button>
+            <button mat-raised-button color="warn" class="me-2">
+                <h6 class="m-2">Cancelar</h6>
+            </button>
+        </div>
+
+    </form>
+</div>

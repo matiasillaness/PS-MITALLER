@@ -1,0 +1,27 @@
+<app-header></app-header>
+<div style="height: max-content; display: flex; justify-content: center; flex-direction: column; align-items: center;">
+    <div *ngFor="let p of ordenes" class="p-3 w-75">
+        <mat-card class="m-3" >
+            <mat-card-header>
+              <mat-card-title>Reserva</mat-card-title>
+              <mat-card-subtitle>Horario: {{p.fecha}}</mat-card-subtitle>
+              <mat-card-subtitle>Precio: {{p.total | currency}}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-actions>
+              <button class="primary" (click)="reservar(p.id)" mat-button>Reservar este turno</button>
+            </mat-card-actions>
+          </mat-card>
+       
+    </div>
+
+    <div *ngIf="ordenes.length <= 0">
+      <div style="height: 50vh; display: flex; justify-content: center; align-items: center;" class="m-3" >
+          <h4>No hay turnos disponibles</h4>
+        </div>
+    </div>
+</div>
+
+
+
+
+<app-footer-partial></app-footer-partial>

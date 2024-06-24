@@ -1,0 +1,44 @@
+
+
+.mat-elevation-z8{
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+
+  
+  th.mat-sort-header-sorted {
+    color: black;
+  }
+
+  table{    
+    border-radius: 5px;
+    overflow:hidden !important;
+ 
+}
+.mat-column-name{
+   padding: 20px;
+
+    font-size: 16px;
+    font-weight: 500;
+    color: #000000;
+}
+
+.mat-column-id_brand{
+    padding: 20px;    font-size: 16px;
+    font-weight: 500;
+    color: #000000;
+}
+
+.mat-column-active{
+    padding: 20px;    font-size: 16px;
+    font-weight: 500;
+    color: #000000;
+}
+
+.mat-column-actions{
+    padding: 20px;    font-size: 16px;
+    font-weight: 500;
+    color: #000000;
+}
+

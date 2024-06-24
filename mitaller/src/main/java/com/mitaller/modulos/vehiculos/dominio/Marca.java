@@ -21,6 +21,9 @@ public class Marca {
     @Column(name = "nombre", nullable = false)
     private String nombre;
 
+    @Column(name = "activo", nullable = false)
+    private boolean activo = true;
+
     //-------------------
     //todo: Relaciones con vehiculos
 

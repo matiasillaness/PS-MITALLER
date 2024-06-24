@@ -1,0 +1,48 @@
+<div class="p-5 row">
+     
+    <div  class="col-12" style="display: flex; justify-content: space-between; padding: 0%;">
+        <div id="xd" class="w-100 me-4">
+            <h3>{{ ganacias | currency }}</h3>
+            <h6>Ventas</h6>
+        </div>
+        <div id="xd" class="w-100 me-4" >
+            <h3 >{{ ganacias - gastos | currency }}</h3>
+            <h6>Ganacias</h6>
+        </div>
+        <div id="xd" class="w-100 me-4">
+            <h3>{{ gastos | currency}}</h3>
+            <h6>Compras</h6>
+        </div>
+    </div>
+  
+    <div id="chart" class="col-12">
+        <apx-chart [series]="chartOptionsPlataFacturada.series || []" [xaxis]="chartOptionsPlataFacturada.xaxis || {}"
+            [dataLabels]="chartOptionsPlataFacturada.dataLabels || {}" [grid]="chartOptionsPlataFacturada.grid || {}"
+            [stroke]="chartOptionsPlataFacturada.stroke || {}"
+            [chart]="chartOptionsPlataFacturada.chart || { type: 'line' }"
+            [title]="chartOptionsPlataFacturada.title|| {}">
+        </apx-chart>
+    </div>
+
+    <div id="chart" class="col-12">
+        <apx-chart [series]="chartOptionsPlataInvertida.series || []" [xaxis]="chartOptionsPlataFacturada.xaxis || {}"
+            [dataLabels]="chartOptionsPlataInvertida.dataLabels || {}" [grid]="chartOptionsPlataFacturada.grid || {}"
+            [stroke]="chartOptionsPlataInvertida.stroke || {}"
+            [chart]="chartOptionsPlataInvertida.chart || { type: 'line' }"
+            [title]="chartOptionsPlataInvertida.title|| {}">
+        </apx-chart>
+    </div>
+
+    <div id="chart" class="col-12">
+        <apx-chart
+          [series]="chartOptions.series || []"
+          [chart]="chartOptions.chart ||  { type: 'radialBar' }"
+          [plotOptions]="chartOptions.plotOptions || {}"
+          [labels]="chartOptions.labels || []"
+          [legend]="chartOptions.legend || {}"
+          [colors]="chartOptions.colors || []"
+          
+        ></apx-chart>
+      </div>
+</div>
+

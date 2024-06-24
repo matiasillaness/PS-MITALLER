@@ -1,0 +1,29 @@
+
+<div class="p-5 w-100">
+    <form [formGroup]="formGroup">
+        <div class="row">
+          <button   mat-raised-button class="me-2 mb-2 w-50" color="primary" type="button" (click)="agregarFecha()">Agregar FECHA</button>
+        </div>
+        <div formArrayName="fechas">
+          <div *ngFor="let fecha of fechas.controls; let i=index" [formGroupName]="i">
+            <ng-container>
+              <mat-form-field class="col-2 m-1">
+                <input matInput type="text" placeholder="Fecha" formControlName="fecha">
+              </mat-form-field>
+      
+              <mat-form-field class="col-2 m-1">
+                <input matInput type="number" placeholder="Precio" formControlName="total">
+              </mat-form-field>
+              <button (click)="eliminarFecha(i)"  mat-raised-button color="warn" class="me-2 ms-2">
+                <h6 class="m-2">Eliminar</h6>
+              </button>
+            </ng-container>
+          </div>
+        </div>
+        <div class="row">
+          <button mat-raised-button class="me-2 mb-2 w-50" color="primary" type="button" (click)="guardar()">Guardar</button>
+        </div>
+      </form>
+</div>
+
+  

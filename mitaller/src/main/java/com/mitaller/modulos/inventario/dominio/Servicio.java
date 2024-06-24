@@ -9,6 +9,7 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Entity
@@ -28,20 +29,20 @@ public class Servicio {
     private String descripcion;
 
     @Column(name = "precio", nullable = false)
-    private double precio;
-
+    private BigDecimal precio;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "tipo", nullable = false)
     private ETipoServicio tipo;
 
+    @Column(name = "activo", nullable = false)
+    private boolean activo = true;
     //-------------------
     //todo: relaciones con venta, orden de trabajo y presupuesto
 
     @OneToMany(fetch = FetchType.LAZY, targetEntity = DetalleVenta.class, mappedBy = "servicio")
     private List<DetalleVenta> detalleVentas;
 
-    @ManyToMany(fetch = FetchType.LAZY, targetEntity = Orden.class, mappedBy = "servicios")
-    private List<Orden> ordenes;
+
 
 }

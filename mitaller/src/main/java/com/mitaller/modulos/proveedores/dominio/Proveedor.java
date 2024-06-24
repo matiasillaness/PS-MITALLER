@@ -20,21 +20,26 @@ public class Proveedor {
     private Long idProveedor;
 
 
-    @Column(name = "nombre", nullable = false)
+    @Column(name = "nombre", nullable = false, unique = true)
     private String nombre;
 
-    @Column(name = "telefono", nullable = false)
+    @Column(name = "telefono", nullable = false, unique = true)
     private String telefono;
 
-    @Column(name = "direccion", nullable = false)
+    @Column(name = "direccion", nullable = false, unique = true)
     private String direccion;
 
-    @Column(name = "email", nullable = false)
+    @Column(name = "email", nullable = false,unique = true)
     private String email;
 
     @Column(name = "descripcion")
     private String descripcion;
 
+
+
+    @Column(name = "tipo_proveedor", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private ETipoProveedor tipoProveedor;
 
     //------------------------------------------------------------------------------------------
     //TODO: RELACIONES CON COMPRAS

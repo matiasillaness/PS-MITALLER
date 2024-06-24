@@ -24,4 +24,19 @@ public enum ETipoVehiculo {
             default -> throw new IllegalArgumentException();
         };
     }
+
+    public String inverseToString(String tipo) {
+        return switch (tipo) {
+            case "Sedán" -> SEDAN.toString();
+            case "Coupé" -> COUPE.toString();
+            case "Hatchback" -> HATCHBACK.toString();
+            case "Descapotable" -> DESCAPOTABLE.toString();
+            case "Station Wagon" -> STATION_WAGON.toString();
+            case "SUV" -> SUV.toString();
+            case "Crossover" -> CROSSOVER.toString();
+            case "Monovolumen" -> MONOVOLUMEN.toString();
+            default -> throw new IllegalArgumentException();
+        };
+    }
+
 }

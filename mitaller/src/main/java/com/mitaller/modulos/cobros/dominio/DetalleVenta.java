@@ -8,6 +8,8 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigDecimal;
+
 @Entity
 @Getter
 @Setter
@@ -22,10 +24,10 @@ public class DetalleVenta {
     private int cantidad;
 
     @Column(name = "precioUnitario", nullable = false)
-    private double precioUnitario;
+    private BigDecimal precioUnitario;
 
     @Column(name = "subtotal", nullable = false)
-    private double subtotal;
+    private BigDecimal subtotal;
 
     @ManyToOne
     @JoinColumn(name = "id_venta")
@@ -40,8 +42,13 @@ public class DetalleVenta {
     @JoinColumn(name = "id_servicio")
     private Servicio servicio;
 
-    public double calcularSubtotal(){
-        return cantidad * precioUnitario;
+    public BigDecimal calcularSubtotal() {
+        return precioUnitario.multiply(BigDecimal.valueOf(cantidad));
     }
+
+    public BigDecimal calcularSubtotalServicio() {
+        return precioUnitario;
+    }
+
 
 }

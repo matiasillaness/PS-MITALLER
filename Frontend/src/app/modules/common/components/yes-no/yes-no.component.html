@@ -1,0 +1,14 @@
+<mat-card class="p-3 d-flex align-items-center justify-content-center">
+    <mat-card-header>
+        <mat-card-title>
+            <h4>{{data.message}}</h4>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <h5 [innerHTML]="data.submessage"></h5>
+    </mat-card-content>
+    <mat-card-actions>
+        <button class="me-2" mat-raised-button color="primary" (click)="onYes()">Sí</button>
+        <button mat-raised-button color="warn" (click)="onNo()">No</button>
+    </mat-card-actions>
+</mat-card>

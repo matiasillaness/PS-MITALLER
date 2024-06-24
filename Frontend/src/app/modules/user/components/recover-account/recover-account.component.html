@@ -1,0 +1,39 @@
+
+
+
+<app-header></app-header>
+<main class="container d-flex align-items-center justify-content-center ">
+    <form *ngIf="!showSecondForm " [formGroup]="formFirstStep" action="" class="form-recover-primer-paso">
+        <h1 class="logo"><a href="index.html">MiTaller<span>.</span></a></h1>
+        <hr>
+        <h4 *ngIf="!borrarFormMientrasCarga">Recuperar Cuenta</h4>
+        <p *ngIf="!borrarFormMientrasCarga">Ingresa tu correo para recuperar tu cuenta</p>
+        <div class="form-floating mb-3 " *ngIf="!borrarFormMientrasCarga">
+            <input type="email" class="form-control" id="email" placeholder="Email" formControlName="email">
+            <label for="email">Email</label>
+        </div>
+        <button type="button" (click)="submit()" *ngIf="!borrarFormMientrasCarga" class="btn btn-primary">Solicitar Correo</button>
+    
+        <!-- Spinner de Angular Material -->
+        <mat-spinner *ngIf="loading" diameter="60" class="" color="primary"></mat-spinner>
+    </form>
+    <form  *ngIf="showSecondForm" [formGroup]="formSecondStep" action="" class="form-recover-primer-paso">
+        <h1 class="logo"><a href="index.html">MiTaller<span>.</span></a></h1>
+        <hr>
+        <h5>Ingresar Codigo y Nueva Contraseña</h5>
+        <div class="form-floating mb-3">
+            <input type="number" formControlName="code"  class="form-control" id="number" placeholder="Numero">
+            <label for="number">Codigo</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="password" formControlName="password" class="form-control" id="password" placeholder="Numero">
+            <label for="password">Nueva Contraseña</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="password" formControlName="confirmPassword" class="form-control" id="password" placeholder="Numero">
+            <label for="password">Repetir Contraseña</label>
+        </div>
+        <button type="button" (click)="submitSecond()" class="btn btn-primary">Cambiar Contraseña</button>
+    </form>
+</main>
+<app-footer-partial></app-footer-partial>

@@ -3,55 +3,61 @@ package com.mitaller.modulos.turnos.dominio;
 
 import com.mitaller.modulos.inventario.dominio.Repuesto;
 import com.mitaller.modulos.inventario.dominio.Servicio;
-import com.mitaller.modulos.usuarios.dominio.Cliente;
+import com.mitaller.modulos.usuarios.dominio.Usuario;
 import com.mitaller.modulos.vehiculos.dominio.Vehiculo;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
 @Getter
 @Setter
+@Builder
 @RequiredArgsConstructor
+@AllArgsConstructor
 public class Orden {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_orden", nullable = false)
     private Long idOrden;
 
+    @Column(name = "id_mercado_pago")
+    private String mercadoPagoId;
+
     @Column(name = "fecha", nullable = false)
     private String fecha;
-
-    @Column(name = "hora", nullable = false)
-    private String hora;
 
     @Enumerated(EnumType.STRING)
     private ETipoOrden tipoOrden;
 
+    //si la crea un empleado el ocupada debe estar en false
+    @Column(name = "ocupada", nullable = false)
+    private Boolean ocupada;
+
+    @Enumerated(EnumType.STRING)
+    private EOrdenEstado estadoOrden;
+
+    @Enumerated(EnumType.STRING)
+    private EMercadoPagoEstado estadoMercadoPago;
+
+    @Column(name = "total")
+    private BigDecimal total;
+
+    @Column(name = "descripcion")
+    private String patenteDelVehiculo;
+
+    @Column(name = "modelo")
+    private String modeloDelVehiculo;
+
+    @Column(name = "recordatorio_enviado")
+    private Boolean recordatorioEnviado;
+
+
     //-------------------
-    //todo: Relaciones con cliente, vehiculo y servicios
 
-    @ManyToOne(fetch = FetchType.LAZY, targetEntity = Vehiculo.class)
-    private Vehiculo vehiculo;
-
-    @ManyToOne(fetch = FetchType.LAZY, targetEntity = Cliente.class)
-    private Cliente cliente;
-
-    @ManyToMany(fetch = FetchType.LAZY, targetEntity = Servicio.class)
-    @JoinTable(name = "orden_servicio",
-            joinColumns = @JoinColumn(name = "id_orden"),
-            inverseJoinColumns = @JoinColumn(name = "id_servicio"))
-    private List<Servicio> servicios;
-
-    @ManyToMany(fetch = FetchType.LAZY, targetEntity = Repuesto.class)
-    @JoinTable(name = "orden_repuesto",
-            joinColumns = @JoinColumn(name = "id_orden"),
-            inverseJoinColumns = @JoinColumn(name = "id_repuesto"))
-    private List<Repuesto> repuestos;
-
-
-
+    @ManyToOne(fetch = FetchType.EAGER, targetEntity = Usuario.class)
+    private Usuario usuario;
 }
