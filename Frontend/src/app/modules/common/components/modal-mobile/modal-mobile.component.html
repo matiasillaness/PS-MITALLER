@@ -1,0 +1,14 @@
+<mat-card style="width: 80vw; height: 200vw; border-radius: 0%; display: flex; flex-direction: column;  ">
+    <ul class="fw-semibold" style="list-style: none;" >
+        <li><a class="nav-link active mt-3" href="#hero">Inicio </a></li>
+        <li><a class="nav-link scrollto mt-3" href="#about">Sobre Nosotros</a></li>
+        <li><a class="nav-link scrollto mt-3" href="#services">Servicios</a></li>
+        <li><a class="nav-link scrollto mt-3" href="#team">Nuestro Equipo</a></li>
+        <li><a class="nav-link scrollto mt-3" href="#contact">Contacto</a></li>         
+        <li *ngIf="!data.login"><a class="nav-link active mt-3" routerLink="/login">Iniciar Sesion</a></li>
+        <li *ngIf="!data.login"><a class="nav-link scrollto mt-3" routerLink="/register">Registrarse</a></li> 
+        <li *ngIf="data.login" class="link-perfil mt-3"><a (click)="openUserDetails()" class="nav-link active">Ir a mi Perfil</a></li>    
+        <li *ngIf="data.login" class="link-perfil mt-3"><a class="nav-link scrollto">Cerrar Sesion</a></li>          
+    </ul>
+</mat-card>
+

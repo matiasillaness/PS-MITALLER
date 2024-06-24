@@ -1,0 +1,62 @@
+<form action="" class="p-4" [formGroup]="form">
+    <div class="row">
+        <div class="col-12">
+            <mat-form-field style="width: 100%;" class="example-full-width">
+                <mat-label>Email</mat-label>
+                <input required formControlName="email" matInput placeholder="Nombre">
+            </mat-form-field>
+            
+        </div>
+        <div class="col-12">
+            <mat-form-field style="width: 100%;" class="example-full-width">
+                <mat-label>Direccion</mat-label>
+                <input required formControlName="direccion" matInput placeholder="Nombre">
+            </mat-form-field>
+            
+        </div>
+        <div class="col-6">
+            <mat-form-field style="width: 100%;" class="example-full-width">
+                <mat-label>Nombre</mat-label>
+                <input required formControlName="nombre" matInput placeholder="Nombre">
+            </mat-form-field>
+            
+        </div>
+        <div class="col-6">
+            <mat-form-field style="width: 100%;" class="example-full-width">
+                <mat-label>Telefono</mat-label>
+                <input required formControlName="telefono" matInput placeholder="Nombre">
+            </mat-form-field>
+            
+        </div>
+        <div class="col-6">
+            <mat-form-field style="width: 100%;" class="example-full-width">
+                <mat-label>Descripcion</mat-label>
+                <input required formControlName="descripcion" matInput placeholder="Nombre">
+            </mat-form-field>
+        </div>
+        <div class="col-6">
+            <mat-form-field style="width: 100%;">
+                <mat-label>Rol</mat-label>
+                <mat-select required formControlName="tipoProveedor">
+                  <mat-option *ngFor="let m of tipoProveedor" [value]="m">
+                    {{m}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-3">
+            <button (click)="save()" mat-raised-button color="primary" style="width: 100%;">
+                <h6 class="mt-2">{{data.message}}    
+                </h6>
+              </button>
+        </div>
+        <div class="col-3">
+            <button (click)="reset()" mat-raised-button color="warn" style="width: 100%;">
+                <h6 class="mt-2">Cancelar</h6>
+              </button>
+        </div>
+    </div>
+</form>

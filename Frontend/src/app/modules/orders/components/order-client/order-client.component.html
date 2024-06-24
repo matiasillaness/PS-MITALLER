@@ -1,0 +1,38 @@
+<app-header></app-header>
+<script src="https://sdk.mercadopago.com/js/v2"></script>
+<div style="height:30vw; width: 100%; display: flex; justify-content: center; align-items: center;">
+    <form  action="" [formGroup]="form" class="w-50 mat-elevation-z3 d-flex justify-content-center">
+        <div class="row p-5 w-100" >
+            <div class="col-4">
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Modelo</mat-label>
+                    <input required formControlName="modeloDelVehiculo" matInput placeholder="Modelo">
+                </mat-form-field>
+            </div>
+            <div class="col-4">
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Patente</mat-label>
+                    <input required formControlName="patenteDelVehiculo" matInput placeholder="Patente">
+                </mat-form-field>
+            </div>
+          
+         
+            <div class="col-4">
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Tipo Orden</mat-label>
+                    <mat-select required formControlName="tipoOrden">
+                      <mat-option *ngFor="let p of typerOrder" [value]="p.value">
+                        {{p.viewValue}}
+                        </mat-option>
+                    </mat-select>
+                    </mat-form-field>
+            </div>
+            <button (click)="initMercadoPago()"  mat-raised-button color="primary">Comprar</button>
+            <div id="wallet_container"></div>
+            </div>
+      
+    
+    </form>
+</div>
+<app-footer-partial></app-footer-partial>
+

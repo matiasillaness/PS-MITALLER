@@ -1,0 +1,28 @@
+
+<app-header></app-header>
+<main class="container d-flex align-items-center justify-content-center ">
+    <form class="form-iniciar-sesion" action="" [formGroup]="form">
+        <h1 class="logo"><a href="index.html">MiTaller<span>.</span></a></h1>
+        <hr>
+        <h4 class="mb-3">Iniciar Sesion</h4>
+            <div class="form-floating mb-3">
+                <input formControlName="email" type="email" class="form-control" id="email" placeholder="Email">
+                <label for="email">Email</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input formControlName="password" type="password" class="form-control" id="contrasenia" placeholder="Contraseña">
+                <label for="contrasenia">Contraseña</label>
+            </div>
+
+           <div *ngIf="isLogged == 'ERROR'" style="color: red;" class="red mt-2 ms-1 mb-3">
+            El email o la contraseña son incorrectos si no tienes cuenta registrate 
+           </div>
+         
+          <div class="mb-3">
+            <a routerLink="/recover-account" class="" for="exampleCheck1">¿Olvidaste tu contraseña?</a> <a routerLink="/register" class="" for="exampleCheck1"> ¿No tienes cuenta?</a>
+          </div>
+          <button type="button" class="btn btn-primary" (click)="onSubmit()">Iniciar Sesion</button>
+    </form>
+</main>
+<app-footer-partial></app-footer-partial>
+

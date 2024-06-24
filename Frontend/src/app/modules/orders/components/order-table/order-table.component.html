@@ -1,0 +1,86 @@
+<div class="m-4">
+    <button mat-raised-button class="me-2 mb-2" color="primary" routerLink="/panel/order/create-orders">
+        Nueva Orden
+     </button>
+
+    <div class="mat-elevation-z4" style="width: 100%; border-radius: 10px;">
+
+        <table mat-table [dataSource]="dataSource" style=" width: 100%; ">
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef>
+                    Nro. Orden
+                </th>
+                <td mat-cell *matCellDef="let element">{{element.id}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="fecha">
+                <th mat-header-cell *matHeaderCellDef>
+                    Descripcion
+                </th>
+                <td mat-cell *matCellDef="let element">{{element.fecha}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="patenteDelVehiculo">
+                <th mat-header-cell *matHeaderCellDef>
+                    Fecha
+                </th>
+                <td mat-cell *matCellDef="let element">{{element.patenteDelVehiculo}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="modeloDelVehiculo">
+                <th mat-header-cell *matHeaderCellDef>
+                    Modelo del Vehiculo
+                </th>
+                <td mat-cell *matCellDef="let element">{{element.modeloDelVehiculo}}</td>
+            </ng-container>
+
+    
+
+            <ng-container matColumnDef="nombreCliente">
+                <th mat-header-cell *matHeaderCellDef>
+                    Total
+                </th>
+                <td mat-cell *matCellDef="let element">{{element.nombreCliente | currency}}</td>
+            </ng-container>
+            <ng-container matColumnDef="email">
+                <th mat-header-cell *matHeaderCellDef>
+                    Email
+                </th>
+                <td mat-cell *matCellDef="let element">{{element.emailDelCliente}}</td>
+            </ng-container>
+
+
+            <ng-container matColumnDef="nombreDelCliente">
+                <th mat-header-cell *matHeaderCellDef>
+                    Nombre Cliente
+                </th>
+                <td mat-cell *matCellDef="let element">{{element.nombreDelCliente}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="tipoOrden">
+                <th mat-header-cell *matHeaderCellDef>
+                    Tipo de Servicio
+                </th>
+                <td mat-cell *matCellDef="let element">{{element.tipoOrden}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef>
+                    Acciones
+                </th>
+                <td mat-cell *matCellDef="let element">
+                    <button mat-raised-button class="me-2" color="primary" >
+                       Completar...
+                    </button>
+                </td>
+            </ng-container>
+        
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+        <mat-paginator class="mt-4" style="border-radius: 5px; " [pageSizeOptions]="[10,15,20]"
+            showFirstLastButtons></mat-paginator>
+    </div>
+
+</div>
+

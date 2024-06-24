@@ -1,0 +1,78 @@
+<mat-toolbar color="primary" style="width: 100vw;">
+  <button mat-icon-button aria-label="Menu icon" (click)="toggleMenu()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  
+  <h1>Bienvenido al Panel de {{panelDe + ' ' + name}}</h1>
+
+  <!-- Añade un elemento con la clase spacer -->
+  <span class="spacer"></span>
+
+  <button mat-raised-button (click)="cerrarSesion()" class="me-4 boton-cerrar-sesion" style="background-color: #EEEEEE; color: #3F51B5;">Cerrar Sesion</button>
+  <button mat-raised-button routerLink="/" class="me-4 boton-cerrar-sesion" style="background-color: #EEEEEE; color: #3F51B5;">Inicio</button>
+
+</mat-toolbar>
+  <mat-sidenav-container autosize="true">
+    <mat-sidenav [ngClass]="!isCollapsed ? 'expanded' : ''" [mode]="isMobile ? 'over' : 'side'" [opened]="isMobile ? 'false' : 'true'">
+      <mat-nav-list>
+        <a mat-list-item>
+          <span class="entry" routerLink="/panel/user/table">
+            <mat-icon>people_outline</mat-icon>
+            <span *ngIf="!isCollapsed">Usuarios</span>
+          </span>
+        </a>
+        <a mat-list-item>
+          <span class="entry" routerLink="/panel/payment/table">
+            <mat-icon> attach_money</mat-icon>
+            <span *ngIf="!isCollapsed" >Pagos</span>
+          </span>
+        </a>
+        <a mat-list-item>
+          <span class="entry" routerLink="/panel/supplier/table">
+            <mat-icon>store</mat-icon>
+            <span *ngIf="!isCollapsed">Proveedores</span>
+          </span>
+        </a>
+        <a mat-list-item>
+          <span class="entry" routerLink="/panel/product/table">
+            <mat-icon>markunread_mailbox</mat-icon>
+            <span *ngIf="!isCollapsed" >Productos</span>
+          </span>
+        </a>
+        <a mat-list-item>
+          <span class="entry"  routerLink="/panel/order/table">
+            <mat-icon>public</mat-icon>
+            <span *ngIf="!isCollapsed">Ordenes</span>
+          </span>
+        </a>
+        <a mat-list-item>
+          <span class="entry" routerLink="/panel/car/table">
+            <mat-icon>directions_car</mat-icon>
+            <span *ngIf="!isCollapsed" >Autos</span>
+          </span>
+        </a>
+        <a mat-list-item>
+          <span class="entry" routerLink="/panel/service/table">
+            <mat-icon>house</mat-icon>
+            <span *ngIf="!isCollapsed" >Servicios</span>
+          </span>
+        </a>
+        <a mat-list-item>
+          <span class="entry" routerLink="/panel/buy/table">
+            <mat-icon> money_off</mat-icon>
+            <span *ngIf="!isCollapsed" >Compras</span>
+          </span>
+        </a>
+        <a mat-list-item>
+          <span class="entry" routerLink="/panel/informs">
+            <mat-icon> circle</mat-icon>
+            <span *ngIf="!isCollapsed" >Informes</span>
+          </span>
+        </a>
+       
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>

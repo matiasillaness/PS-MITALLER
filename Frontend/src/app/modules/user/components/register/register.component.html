@@ -1,0 +1,57 @@
+<app-header></app-header>
+<main class="container d-flex align-items-center justify-content-center">
+    <form [formGroup]="form" class="form-iniciar-sesion" action="">
+        <h1 class="logo"><a href="index.html">MiTaller<span>.</span></a></h1>
+        <hr>
+        <h4 class="mb-3">Registrarse</h4>
+        <div class="row">
+            <div class="form-floating mb-3 col-12 col-md-6" >
+                <input formControlName="nombre" type="text" class="form-control" id="nombre" placeholder="Nombre">
+                <label  for="nombre">Nombre</label>
+                <small *ngIf="form.get('nombre')!.invalid && form.get('nombre')!.touched" class="text-danger">El nombre es requerido</small>
+            </div>
+            <div class="form-floating mb-3 col-12 col-md-6">
+                <input formControlName="apellido" type="text" class="form-control" id="apellido" placeholder="Apellido">
+                <label for="apellido">Apellido</label>
+                <small *ngIf="form.get('apellido')!.invalid && form.get('apellido')!.touched" class="text-danger">El nombre es requerido</small>
+
+            </div>
+            <div class="form-floating mb-3 col-12 col-md-12">
+                <input formControlName="phone" type="number" class="form-control" id="phone" placeholder="Telefono">
+                <label for="phone">Telefono</label>
+                <small *ngIf="form.get('phone')!.invalid && form.get('phone')!.touched" class="text-danger">El nombre es requerido</small>
+
+            </div>
+            <div class="form-floating col-12 col-md-12">
+                <input formControlName="direccion" type="text" class="form-control" id="direccion" placeholder="Direccion">
+                <label for="direccion">Direccion</label>
+                <small *ngIf="form.get('direccion')!.invalid && form.get('direccion')!.touched" class="text-danger">El nombre es requerido</small>
+
+            </div>
+            
+            <div class="form-floating mt-3 mb-3 col-12 col-md-12">
+                <input formControlName="email" type="email" class="form-control" id="email" placeholder="Email">
+                <label for="email">Email</label>
+                <small *ngIf="form.get('email')!.invalid && form.get('email')!.touched" class="text-danger">El email es requerido</small>
+            </div>
+            <div class="form-floating mb-3 col-12 col-md-6">
+                <input formControlName="password" type="password" class="form-control" id="contrasenia" placeholder="Contraseña">
+                <label for="contrasenia">Contraseña</label>
+                <small *ngIf="form.get('password')!.invalid && form.get('password')!.touched" class="text-danger">La contraseña es requerida</small>
+            </div>
+            <div class="form-floating mb-3 col-12 col-md-6">
+                <input formControlName="secondPassword"  type="password" class="form-control" id="contrasenia" placeholder="Contraseña">
+                <label for="contrasenia">Repetir Contraseña</label>
+                <small *ngIf="form.get('secondPassword')!.invalid && form.get('secondPassword')!.touched" class="text-danger">La contraseña es requerida</small>
+            </div>
+            <div class="mb-3">
+                <a class="" routerLink="/login" for="exampleCheck1">¿Ya tienes cuenta?</a>
+            </div>
+            <div>
+                <button type="" class="btn btn-primary" (click)="onSubmit()">Registrarse</button>
+            </div>
+        </div>
+    </form>
+  
+</main>
+<app-footer-partial></app-footer-partial>

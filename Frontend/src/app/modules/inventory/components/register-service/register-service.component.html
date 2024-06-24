@@ -1,0 +1,47 @@
+<form action="" class="m-4 p-3">
+    <form action="" [formGroup]="form">
+        <div class="row">
+            <div class="col-6">
+                <mat-form-field style="width: 100%;" class="example-full-width">
+                    <mat-label>Nombre</mat-label>
+                    <input formControlName="nombre" required matInput placeholder="Nombre">
+                </mat-form-field>
+            </div>
+            <div class="col-6">
+                <mat-form-field style="width: 100%;" class="example-full-width">
+                    <mat-label>Descripcion</mat-label>
+                    <input formControlName="descripcion" required matInput placeholder="Descripcion">
+                </mat-form-field>
+            </div>
+            <div class="col-6">
+                <mat-form-field style="width: 100%;" class="example-full-width">
+                    <mat-label>Precio</mat-label>
+                    <input formControlName="precio" type="number" required matInput placeholder="Precio">
+                </mat-form-field>
+            </div>
+            <div class="col-6">
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Tipo</mat-label>
+                    <mat-select formControlName="tipo" required>
+                      <mat-option  *ngFor="let e of tipoServicio" [value]="e.value">
+                        {{e.viewValue}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+            </div>
+    
+            <div class="col-3">
+                <button (click)="save()" mat-raised-button color="primary" style="width: 100%;">
+                    <h6 class="mt-2">{{data.message}}
+                    </h6>
+                  </button>
+            </div>
+            <div class="col-3">
+                <button (click)="reset()" mat-raised-button color="warn" style="width: 100%;">
+                    <h6 class="mt-2">Cancelar</h6>
+                  </button>
+              </div>
+        </div>
+    </form>
+   
+</form>
