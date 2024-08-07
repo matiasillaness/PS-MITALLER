@@ -13,6 +13,7 @@ import {
   ApexResponsive
 } from 'ng-apexcharts';
 import { InformsService } from '../../services/informs.service';
+import { MatSelectChange } from '@angular/material/select';
 
 
 export type ChartOptions = {
@@ -41,6 +42,33 @@ export type ChartOptionsCircle = {
   styleUrls: ['./dashboard-informs.component.css']
 })
 export class DashboardInformsComponent implements OnInit{
+  availableYears: number[] = [2021, 2022, 2023, 2024, 2025];
+  // Usar MatSelectChange para onYearChange
+  onYearChange(event: MatSelectChange) {
+    const year = event.value; // Obtener el año seleccionado
+    this._informsService.getPlataPorMes(year).subscribe((data) => {
+      this.chartOptionsPlataFacturada.series = [
+        {
+          name: 'Plata Facturada',
+          data: data.map((p: any) => p.total) // Asegúrate de que 'p.total' esté disponible en tu data
+        }
+      ];
+    });
+  }
+
+  // Usar MatSelectChange para onYearChange2
+  onYearChange2(event: MatSelectChange) {
+    const year = event.value; // Obtener el año seleccionado
+    this._informsService.getPlataQueMasSeGasta(year).subscribe((data) => {
+      this.chartOptionsPlataInvertida.series = [
+        {
+          name: 'Plata Invertida',
+          data: data.map((p: any) => p.total) // Asegúrate de que 'p.total' esté disponible en tu data
+        }
+      ];
+    });
+  }
+
   public chartOptionsPlataFacturada: Partial<ChartOptions>;
   public chartOptionsPlataInvertida: Partial<ChartOptions>;
   public chartOptions: Partial<ChartOptionsCircle>;
@@ -123,7 +151,7 @@ export class DashboardInformsComponent implements OnInit{
         curve: 'straight'
       },
       title: {
-        text: 'Dinero Facturado por Mes en el Año Actual',
+        text: 'Dinero Facturado por Mes en el Año',
         align: 'left'
       },
       grid: {
@@ -184,7 +212,8 @@ export class DashboardInformsComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this._informsService.getPlataPorMes().subscribe((data) => {
+    let anioActual = new Date().getFullYear();
+    this._informsService.getPlataPorMes(anioActual).subscribe((data) => {
       this.chartOptionsPlataFacturada.series = [
         {
           name: 'Plata Facturada',
@@ -195,7 +224,7 @@ export class DashboardInformsComponent implements OnInit{
     });
 
 
-    this._informsService.getPlataQueMasSeGasta().subscribe((data) => {
+    this._informsService.getPlataQueMasSeGasta(anioActual).subscribe((data) => {
 
       this.chartOptionsPlataInvertida.series = [
         {

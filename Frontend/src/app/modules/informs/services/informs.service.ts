@@ -16,22 +16,18 @@ export class InformsService {
     return this._httoClient.get<ServiciosMasUtilizados[]>('http://localhost:8080/serviciosMasUtilizados');
   }
 
-  getPlataPorMes(): Observable<PlataUsada[]> {
+  getPlataPorMes(anio: number): Observable<PlataUsada[]> {
     let param = new HttpParams();
 
-    let anioActual = new Date().getFullYear();
-
-    param = param.set('year', anioActual);
+    param = param.set('year', anio);
 
     return this._httoClient.get<PlataUsada[]>('http://localhost:8080/cantidadDeVentaPorMes', { params: param });
   }
 
-  getPlataQueMasSeGasta(): Observable<PlataUsada[]> {
+  getPlataQueMasSeGasta(anio: number): Observable<PlataUsada[]> {
     let param = new HttpParams();
 
-    let anioActual = new Date().getFullYear();
-
-    param = param.set('year', anioActual);
+    param = param.set('year', anio);
     return this._httoClient.get<PlataUsada[]>('http://localhost:8080/mesesConMasPlataInvertida', { params: param });
   }
 

@@ -5,20 +5,25 @@
     <div class="container d-flex align-items-center justify-content-between">
 
         <h1 class="logo"><a>MiTaller<span>.</span></a></h1>
-        <nav id="navbar" class="navbar">
+        <nav id="navbar" class="navbar ms-5">
             <ul>
                 <li><a class="nav-link active" href="#hero">Inicio</a></li>
                 <li><a class="nav-link scrollto" href="#about">Sobre Nosotros</a></li>
                 <li><a class="nav-link scrollto" href="#services">Servicios</a></li>
                 <li><a class="nav-link scrollto" href="#team">Nuestro Equipo</a></li>
-                <li><a class="nav-link scrollto" href="#contact">Contacto</a></li>         
-                <li *ngIf="!login"><a class="nav-link active" routerLink="/login">Iniciar Sesion</a></li>
-                <li *ngIf="!login"><a class="nav-link scrollto" routerLink="/register">Registrarse</a></li>            
+                <li><a class="nav-link scrollto" href="#contact">Contacto</a></li>           
             </ul>
+            
            
             <i class="bi bi-list mobile-nav-toggle" (click)="openMobileNavigation()">
                 
             </i>
+        </nav>
+        <nav id="navbar" class="navbar">
+            <ul>
+                <li *ngIf="!login"><a class="nav-link active" routerLink="/login">Iniciar Sesion</a></li>
+                <li *ngIf="!login"><a class="nav-link scrollto" routerLink="/register">Registrarse</a></li>      
+            </ul>
         </nav>
         <div class="btn-group" *ngIf="login">
             <button type="button" class="btn" data-bs-toggle="dropdown" aria-expanded="false">

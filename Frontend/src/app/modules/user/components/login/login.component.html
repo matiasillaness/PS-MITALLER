@@ -7,11 +7,11 @@
         <h4 class="mb-3">Iniciar Sesion</h4>
             <div class="form-floating mb-3">
                 <input formControlName="email" type="email" class="form-control" id="email" placeholder="Email">
-                <label for="email">Email</label>
+                <label for="email">Email*</label>
             </div>
             <div class="form-floating mb-3">
                 <input formControlName="password" type="password" class="form-control" id="contrasenia" placeholder="Contraseña">
-                <label for="contrasenia">Contraseña</label>
+                <label for="contrasenia">Contraseña*</label>
             </div>
 
            <div *ngIf="isLogged == 'ERROR'" style="color: red;" class="red mt-2 ms-1 mb-3">
