@@ -53,6 +53,9 @@ MiTaller se centra en 8 módulos principales que cubren todos los aspectos clave
 - Sistema de autorización y autenticación.
 - Seguridad y control de accesos.
 
+
 ## Ver Proyecto
 
-Para más información y para ver el proyecto en acción, sigue el enlace a nuestro repositorio.
+Para ver una demostración del proyecto, haz clic en la imagen a continuación:
+
+[![Ver Video](https://www.youtube.com/watch?v=uF5MttJbP4Y)](https://www.youtube.com/watch?v=uF5MttJbP4Y)
